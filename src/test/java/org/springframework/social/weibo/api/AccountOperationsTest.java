@@ -19,11 +19,16 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import javax.annotation.Resource;
+
 /**
  * AccountOperationsTest
  * @author cuizuoli
  */
 public class AccountOperationsTest extends AbstractWeiboTest {
+
+	@Resource
+	protected Weibo weiboTemplate;
 
 	@Test
 	public void getSchoolList() {
@@ -39,8 +44,14 @@ public class AccountOperationsTest extends AbstractWeiboTest {
 
 	@Test
 	public void getUid() {
-		Map<String, Object> userId = weiboTemplate.accountOperations().getUid();
+		Map<String, Long> userId = weiboTemplate.accountOperations().getUid();
 		log.info(userId.toString());
 	}
 
+	@Test
+	public void getProfile() {
+		Map<String, Long> userId = weiboTemplate.accountOperations().getUid();
+		Map<String, Object> profile = weiboTemplate.userOperations().getUserProfileById((Long)userId.get("uid"));
+
+	}
 }

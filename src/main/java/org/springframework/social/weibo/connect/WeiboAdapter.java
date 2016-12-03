@@ -33,7 +33,7 @@ public class WeiboAdapter implements ApiAdapter<Weibo> {
 	@Override
 	public boolean test(Weibo weibo) {
 		try {
-			Map<String, Object> userId = weibo.accountOperations().getUid();
+			Map<String, Long> userId = weibo.accountOperations().getUid();
 			if (userId.get("uid") != null) {
 				return true;
 			}
@@ -45,7 +45,7 @@ public class WeiboAdapter implements ApiAdapter<Weibo> {
 
 	@Override
 	public void setConnectionValues(Weibo weibo, ConnectionValues values) {
-		Map<String, Object> userId = weibo.accountOperations().getUid();
+		Map<String, Long> userId = weibo.accountOperations().getUid();
 		Map<String, Object> profile = weibo.userOperations().getUserProfileById((Long)userId.get("uid"));
 		values.setProviderUserId((String)profile.get("id"));
 		values.setDisplayName((String)profile.get("screen_name"));
@@ -55,7 +55,7 @@ public class WeiboAdapter implements ApiAdapter<Weibo> {
 
 	@Override
 	public UserProfile fetchUserProfile(Weibo weibo) {
-		Map<String, Object> userId = weibo.accountOperations().getUid();
+		Map<String, Long> userId = weibo.accountOperations().getUid();
 		Map<String, Object> profile = weibo.userOperations().getUserProfileById((Long)userId.get("uid"));
 		return new UserProfileBuilder()
 			.setName((String)profile.get("screen_name"))

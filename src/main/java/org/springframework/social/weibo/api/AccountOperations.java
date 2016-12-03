@@ -47,6 +47,6 @@ public interface AccountOperations {
 	 * OAuth授权之后，获取授权用户的UID
 	 * @return
 	 */
-	Map<String, Object> getUid();
+	Map<String, Long> getUid();
 
 }

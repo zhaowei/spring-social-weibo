@@ -27,8 +27,8 @@ public class TimelineOperationsTest extends AbstractWeiboTest {
 
 	@Test
 	public void updateStatus() {
-		Map<String, Object> status = weiboTemplate.timelineOperations().updateStatus("测试Test");
-		System.out.println(status);
+		//Map<String, Object> status = weiboTemplate.timelineOperations().updateStatus("测试Test");
+		//System.out.println(status);
 	}
 
 }

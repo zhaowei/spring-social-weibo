@@ -27,7 +27,7 @@ public class UserOperationsTest extends AbstractWeiboTest {
 
 	@Test
 	public void getUserProfileById() {
-		Map<String, Object> profile = weiboTemplate.userOperations().getUserProfileById(1904178193);
+		Map<String, Object> profile = weiboTemplate.userOperations().getUserProfileById(6079907494l);
 		log.info(profile.toString());
 	}
 

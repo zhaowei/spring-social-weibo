@@ -15,8 +15,10 @@
  */
 package org.springframework.social.weibo.api.impl;
 
+import java.util.HashMap;
 import java.util.Map;
 
+import org.omg.CORBA.OBJ_ADAPTER;
 import org.springframework.social.weibo.api.AccountOperations;
 import org.springframework.social.weibo.api.WeiboApiOperations;
 import org.springframework.util.LinkedMultiValueMap;
@@ -72,8 +74,11 @@ public class AccountTemplate extends AbstractWeiboOperations implements AccountO
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Map<String, Object> getUid() {
-		return weiboApi.getObject("account/get_uid.json", Map.class);
+	public Map<String, Long> getUid() {
+		Map<String, Object> map =  weiboApi.getObject("account/get_uid.json", Map.class);
+		Map<String, Long> remap = new HashMap<>();
+		remap.put("uid", Long.valueOf(map.get("uid").toString()));
+		return remap;
 	}
 
 }
